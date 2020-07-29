@@ -1,0 +1,26 @@
+.container-gameplay {
+	height: 100%;
+	width: 50%;
+}
+
+.gameplay {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.question-num {
+	align-self: flex-start;
+	width: 100%;
+	padding: 1rem 0;
+	border-bottom: var(--line);
+}
+.answer-buttons {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.hide {
+	display: none;
+}

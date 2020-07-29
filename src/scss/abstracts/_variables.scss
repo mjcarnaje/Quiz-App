@@ -1,0 +1,18 @@
+:root {
+	--color-background: #252c4a;
+	--color-white: #fff;
+	--color-primary-1: #f36364;
+	--color-primary-2: #f292ed;
+	--color-secondary: #ccd6ff;
+	--color-tertiary: #2b3250;
+	--color-quaternary: #454e72;
+	--color-5: #243051;
+	--color-6: #224162;
+	--color-wrong: #f72d2d;
+	--color-correct: #4deb62;
+
+	--shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+	--shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.1);
+
+	--line: 1px dotted var(--color-secondary);
+}

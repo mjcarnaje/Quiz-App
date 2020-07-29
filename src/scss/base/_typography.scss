@@ -1,0 +1,37 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+	line-height: 1.6;
+}
+
+.heading-1 {
+	font-size: 7rem;
+
+	font-weight: 800;
+	color: var(--color-white);
+
+	&__highscore {
+		border-bottom: var(--line);
+		margin-bottom: 4rem;
+		padding: 1.5rem;
+	}
+}
+.paragraph {
+	font-size: 1.6rem;
+}
+
+.heading-2 {
+	font-size: 3rem;
+	font-weight: 600;
+	color: var(--color-secondary);
+}
+
+.heading-3 {
+	font-size: 2.5rem;
+	font-weight: 700;
+	color: var(--color-white);
+}
+
+span {
+	font-size: 2rem;
+	font-weight: 500;
+}
