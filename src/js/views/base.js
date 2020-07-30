@@ -1,12 +1,19 @@
 export const elements = {
-	startButton: document.getElementById('start-btn'),
-	highScoreButton: document.getElementById('high-score-button'),
+	//Play again(score, name, save)
+	score: document.querySelector('.playagain__score'),
+	name: document.getElementById('name-input'),
+	save: document.querySelector('.save'),
+
+	// Containers
+	highScoreContainer: document.querySelector('.container-highscore'),
 	homeContainer: document.querySelector('.home-container'),
 	gamePlayContainer: document.querySelector('.container-gameplay'),
-	homeContainer: document.querySelector('.home-container'),
-	highScoreContainer: document.querySelector('.container-highscore'),
-	choices: document.querySelectorAll('btn__choice'),
-	answersContainer: document.querySelector('.answer-buttons'),
-	questionCounter: document.querySelector('.question-num'),
-	progressBarDone: document.getElementById('progress'),
+	playAgainContaineer: document.querySelector('.container-playagain'),
+};
+
+export const clearContainer = () => {
+	elements.homeContainer.innerHTML = '';
+	elements.gamePlayContainer.innerHTML = '';
+	elements.playAgainContaineer.innerHTML = '';
+	elements.highScoreContainer.innerHTML = '';
 };

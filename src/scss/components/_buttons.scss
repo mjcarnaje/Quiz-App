@@ -40,6 +40,18 @@
 			var(--color-primary-2)
 		);
 	}
+	&__playagain {
+		border: none;
+		background-image: linear-gradient(
+			to right,
+			var(--color-primary-1),
+			var(--color-primary-2)
+		);
+		padding: 1rem 3.5rem;
+		margin-bottom: 1rem;
+		border-radius: 4rem;
+		font-weight: 500;
+	}
 	&__next {
 		border: none;
 		font-size: 2rem;
@@ -51,12 +63,12 @@
 			var(--color-primary-1),
 			var(--color-primary-2)
 		);
-		margin-top: 4rem;
+		margin-top: 1rem;
 	}
 	&__choice {
 		padding: 0 4rem;
-		height: 4.5rem;
-		width: 55%;
+		height: 4.2rem;
+		width: 27rem;
 		background-color: var(--color-5);
 		margin: 0.8rem 0;
 		border: 5px solid var(--color-6);

@@ -1,19 +1,33 @@
-.container-gameplay {
-	height: 100%;
-	width: 50%;
-}
-
 .gameplay {
 	height: 100vh;
+	width: 90vh;
+	padding: 2rem 0 0 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-.question-num {
+.header-container {
 	align-self: flex-start;
 	width: 100%;
-	padding: 1rem 0;
+	padding: 0.5rem 0 1.5rem 0;
 	border-bottom: var(--line);
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.score {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__text {
+		font-size: 1.6rem;
+	}
+	&__num {
+		font-size: 4rem;
+		margin-top: 0.2rem;
+	}
 }
 .answer-buttons {
 	width: 100%;
