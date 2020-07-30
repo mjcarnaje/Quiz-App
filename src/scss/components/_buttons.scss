@@ -88,3 +88,7 @@
 .wrong {
 	background-color: var(--color-wrong);
 }
+
+.disable-pointer {
+	pointer-events: none;
+}

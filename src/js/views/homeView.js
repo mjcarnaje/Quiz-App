@@ -10,9 +10,6 @@ export const renderHomeView = () => {
             <button class="btn btn__home start-btn">
                 Start Game
             </button>
-            <button class="btn btn__home high-score-btn">
-                High Score
-            </button>
         </div>
 	</div>
     `;

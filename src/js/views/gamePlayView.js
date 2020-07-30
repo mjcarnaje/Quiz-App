@@ -70,8 +70,10 @@ const createNextButton = () => {
 const setStatusClass = (element, correct) => {
 	if (correct) {
 		element.classList.add('correct');
+		element.classList.add('disable-pointer');
 	} else {
 		element.classList.add('wrong');
+		element.classList.add('disable-pointer');
 	}
 };
 

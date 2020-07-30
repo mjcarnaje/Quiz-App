@@ -4,9 +4,7 @@ import { elements, clearContainer } from './js/views/base';
 import * as gamePlayView from './js/views/gamePlayView';
 import * as playAgainView from './js/views/playAgainView';
 import * as homeView from './js/views/homeView';
-import * as highScoreView from './js/views/highScoreView';
 import gameState from './js/models/gamePlay';
-import Scores from './js/models/highScore';
 
 const state = {};
 window.state = state;
@@ -40,7 +38,10 @@ const nextQuestion = () => {
 	if (state.questions.remainingQuestions > 0) {
 		updateQuestion();
 	} else {
-		playAgainView.renderPlayAgain(state.questions.score);
+		playAgainView.renderPlayAgain(
+			state.questions.score,
+			state.questions.maxQuestions
+		);
 	}
 };
 
@@ -50,19 +51,12 @@ const updateQuestion = () => {
 	document.querySelectorAll('.btn__choice').forEach((el) =>
 		el.addEventListener('click', (e) => {
 			gamePlayView.checksAnswer();
+
 			state.questions.updateScore(e);
 			gamePlayView.updateScore(state.questions.score);
 			console.log(state.questions.score);
 		})
 	);
-};
-
-state.player = new Scores();
-
-const saveScore = () => {
-	const name = playAgainView.getInput();
-	const score = playAgainView.getScore(state.questions);
-	state.player.addName(name, score);
 };
 
 //* Event Listeners
@@ -71,17 +65,6 @@ const saveScore = () => {
 elements.homeContainer.addEventListener('click', (e) => {
 	if (e.target.matches('.start-btn')) {
 		controlStartGame();
-	} else if (e.target.matches('.high-score-btn')) {
-		clearContainer();
-		highScoreView.renderHighScoreView();
-	}
-});
-
-// When home button is clicked in highScoreContainer
-elements.highScoreContainer.addEventListener('click', (e) => {
-	if (e.target.matches('.gotohome')) {
-		clearContainer();
-		homeView.renderHomeView('Michael', 'Score');
 	}
 });
 
