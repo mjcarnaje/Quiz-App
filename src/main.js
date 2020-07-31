@@ -19,6 +19,7 @@ const controlStartGame = async () => {
 	// Get the questions and start game
 	try {
 		await state.questions.getQuestions();
+		await state.questions.startGame();
 	} catch (err) {
 		console.log(err);
 	}
@@ -42,6 +43,7 @@ const nextQuestion = () => {
 			state.questions.score,
 			state.questions.maxQuestions
 		);
+		gamePlayView.updateScore();
 	}
 };
 
@@ -50,43 +52,42 @@ const updateQuestion = () => {
 	gamePlayView.RenderGamePlay(state.questions);
 	document.querySelectorAll('.btn__choice').forEach((el) =>
 		el.addEventListener('click', (e) => {
-			gamePlayView.checksAnswer();
-
+			checkAns();
 			state.questions.updateScore(e);
 			gamePlayView.updateScore(state.questions.score);
-			console.log(state.questions.score);
 		})
 	);
 };
 
 //* Event Listeners
 
-// When the start button and high score button is clicked
-elements.homeContainer.addEventListener('click', (e) => {
-	if (e.target.matches('.start-btn')) {
-		controlStartGame();
-	}
-});
+eventDelegateEvent(document, 'click', '.start-btn', controlStartGame);
+eventDelegateEvent(document, 'click', '.btn__next', nextQuestion);
+eventDelegateEvent(document, 'click', '.restart', playAgain);
+eventDelegateEvent(document, 'click', '.gotohome', goToHome);
 
-// When the next question button is clicked
-elements.gamePlayContainer.addEventListener('click', (e) => {
-	if (e.target.matches('.btn__next')) {
-		nextQuestion();
-	}
-});
+function checkAns() {
+	document.querySelectorAll('.btn__choice').forEach((button) => {
+		gamePlayView.setStatusClass(button, button.dataset.correct);
+	});
+	gamePlayView.createNextButton();
+}
 
-// When play again button or home button is clicked
-elements.playAgainContaineer.addEventListener('click', (e) => {
-	if (e.target.matches('.restart')) {
-		clearContainer();
-		controlStartGame();
-		setTimeout(() => {
-			gamePlayView.updateScore(state.questions.score);
-		}, 20);
-	} else if (e.target.matches('.gotohome')) {
-		clearContainer();
-		homeView.renderHomeView();
-	} else if (e.target.matches('.save')) {
-		saveScore();
-	}
-});
+function playAgain() {
+	clearContainer();
+	controlStartGame();
+	gamePlayView.updateScore();
+}
+
+function goToHome() {
+	clearContainer();
+	homeView.renderHomeView();
+}
+
+function eventDelegateEvent(element, event, selector, cb) {
+	element.addEventListener(event, (e) => {
+		if (e.target.matches(selector)) {
+			cb();
+		}
+	});
+}

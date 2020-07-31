@@ -1,6 +1,5 @@
 import { elements } from '../views/base';
 
-let acceptingAnswers = false;
 let questions = [];
 let points = 10;
 
@@ -9,17 +8,9 @@ export default class gameState {
 		this.currentQuestion = {};
 	}
 	async getQuestions() {
-		await fetch('Questions.json')
-			.then((res) => {
-				return res.json();
-			})
-			.then((loadedQuestions) => {
-				questions = loadedQuestions;
-				this.startGame();
-			})
-			.catch((err) => {
-				console.error(err);
-			});
+		let respond = await fetch('Questions.json');
+		let data = await respond.json();
+		questions = await data;
 	}
 	startGame() {
 		this.availableQuestion = [...questions];
@@ -39,7 +30,6 @@ export default class gameState {
 
 		// Remove the current question
 		this.availableQuestion.splice(questionIndex, 1);
-		acceptingAnswers = true;
 	}
 	updateScore(e) {
 		const selectedButton = e.target;
@@ -47,10 +37,8 @@ export default class gameState {
 
 		if (correct) {
 			this.score += points;
-			console.log('God is good.');
 		} else {
 			return this.score;
-			console.log('God is good.');
 		}
 	}
 }

@@ -1,9 +1,4 @@
 export const elements = {
-	//Play again(score, name, save)
-	score: document.querySelector('.playagain__score'),
-	name: document.getElementById('name-input'),
-	save: document.querySelector('.save'),
-
 	// Containers
 	highScoreContainer: document.querySelector('.container-highscore'),
 	homeContainer: document.querySelector('.home-container'),
